@@ -26,7 +26,8 @@ export function SignUp() {
       const { data: responseData, error} = await authClient.signUp.email({
         email: data.email,
         password: data.password,
-        name: data.username
+        name: data.username,
+        callbackURL: "/",
       });
 
       if (error) {

@@ -21,8 +21,19 @@ export function Login() {
   })
 
   const submitLogin = async (data: LoginData) => {
-    console.log(data)
-    reset()
+    const { data: responseData, error } = await authClient.signIn.email({
+      email: data.email,
+      password: data.password,
+      callbackURL: "/",
+    });
+
+    if (error) {
+      toast.error(error.message || "Login failed");
+      return;
+    }
+
+    toast.success("Login successful");
+    reset();
   }
 
   return (
