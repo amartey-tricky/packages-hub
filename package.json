@@ -6,19 +6,37 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "biome-lint": "biome check .",
+    "biome-format": "biome check . --write",
+    "biome-format:unsafe": "biome check . --fix --unsafe",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "studio": "drizzle-kit studio --port 3001 --verbose"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
+    "better-auth": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.4",
+    "next": "15.0.3",
+    "pg": "^8.13.1",
+    "postgres": "^3.4.5",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "next": "15.0.3"
+    "react-hook-form": "^7.53.2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@better-auth/cli": "^1.0.4",
+    "@biomejs/biome": "^1.9.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "drizzle-kit": "^0.28.1",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5"
   }
 }

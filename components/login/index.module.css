@@ -1,0 +1,126 @@
+.form {
+  @apply flex
+  flex-col
+  justify-start
+  relative
+  gap-4
+  border
+  rounded-[2rem]
+  shadow-lg
+  h-fit
+  w-[100%]
+  max-w-lg
+  px-12
+  py-8;
+}
+
+.image {
+  @apply mx-auto;
+}
+
+.title {
+  @apply font-bold
+  text-xl
+  text-center
+  uppercase
+  text-purple-900/60;
+}
+
+.form_email {
+  @apply flex
+  flex-col
+  gap-2;
+}
+
+.form_email input {
+  @apply max-w-[100%]
+  w-full
+  border
+  border-purple-400
+  outline-none
+  rounded-xl
+  backdrop-blur-sm
+  duration-300
+  leading-3
+  placeholder:text-gray-400
+  indent-5
+  min-h-12
+  focus:border-purple-500
+  focus:outline-none
+  focus:ring-2
+  focus:ring-purple-500;
+}
+
+.error {
+  @apply text-sm
+  text-red-500
+  mt-2;
+}
+
+.form_password {
+  @apply flex
+  flex-col
+  gap-2
+  mt-4;
+}
+
+.form_password input {
+  @apply max-w-[100%]
+  w-full
+  border
+  border-purple-400
+  outline-none
+  rounded-xl
+  leading-3
+  backdrop-blur-sm
+  duration-300
+  placeholder:text-gray-400
+  indent-5
+  min-h-12
+  focus:border-purple-500
+  focus:outline-none
+  focus:ring-2
+  focus:ring-purple-500;
+}
+
+.submit {
+  @apply mt-4
+  w-full
+  border-none
+  bg-purple-500/50
+  text-white
+  rounded-xl
+  flex
+  justify-center
+  items-center
+  outline-none
+  cursor-pointer
+  tracking-wider
+  min-h-12
+  leading-10
+  hover:bg-purple-500
+  transition-colors
+  duration-300;
+}
+
+.form_footer {
+  @apply
+  w-full
+  mt-4;
+}
+
+.footer_text {
+  @apply flex
+  justify-between
+  items-center
+  gap-4
+  text-gray-400;
+}
+
+.footer_link {
+  @apply text-purple-500
+  hover:text-purple-400
+  hover:underline
+  font-semibold
+  text-lg;
+}
