@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema } from "@/utils/schema";
 import type { SignUpData } from "@/utils/schema";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 export function SignUp() {
   const {
@@ -17,14 +18,28 @@ export function SignUp() {
     formState: { errors, isSubmitting },
   } = useForm<SignUpData>({
     resolver: zodResolver(signUpSchema),
+    mode: "onBlur",
   })
 
   const submitSignUp = async (data: SignUpData) => {
-    const { data, error } = await authClient.signUp.email({
-      email: data.email,
-      password: data.password,
-      name: data.username,
-    })
+    try {
+      const { data: responseData, error} = await authClient.signUp.email({
+        email: data.email,
+        password: data.password,
+        name: data.username
+      });
+
+      if (error) {
+        toast.error(error.message || "Sign up failed");
+        return;
+      }
+
+      toast.success("Sign up successful");
+      reset();
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+      toast.error(errorMessage);
+    }
   }
 
   return (
@@ -54,7 +69,7 @@ export function SignUp() {
           <input type="password" id="confirmPassword" autoComplete="off" placeholder="********" {...register("confirmPassword")} required />
           {errors.confirmPassword && <span className={styles.error}>{errors.confirmPassword.message}</span>}
         </div>
-        <button type="submit" className={styles.submit}>
+        <button type="submit" disabled={isSubmitting} className={styles.submit}>
           {isSubmitting ? "Loading..." : "Sign Up"}
         </button>
       </div>

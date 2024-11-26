@@ -21,5 +21,10 @@ export const auth = betterAuth({
       clientSecret: process.env.APPLE_CLIENT_SECRET || "",
       scope: ["email", "name", "openid"],
     }
+ },
+  emailVerification: {
+    enabled: true,
+    sendOnSignUp: true,
+    sendVerificationEmail: async ({ user, url, token}, request) => {}
   }
 })

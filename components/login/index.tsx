@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/utils/schema";
 import type { LoginData } from "@/utils/schema";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
 
 export function Login() {
   const {
@@ -40,7 +42,7 @@ export function Login() {
           <input type="password" id="password" autoComplete="off" placeholder="********" {...register("password")} required />
           {errors.password && <span className={styles.error}>{errors.password.message}</span>}
         </div>
-        <button type="submit" className={styles.submit}>
+        <button type="submit" disabled={isSubmitting} className={styles.submit}>
           {isSubmitting ? "Loading..." : "Login"}
         </button>
       </div>
